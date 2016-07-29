@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 <head>
-  <script src='done-typing.js'></script>
   <title>done-typing.js demo</title>
+  <script src='done-typing.js'></script>
   <style>
 body {
   width: 20em;
@@ -40,7 +40,7 @@ input {
   </style>
 </head>
 <body>
-  <h1>done-typing.js demo</h1>
+  <h1>done-typing demo</h1>
   <input id='bind' placeholder='type here...'/>
   <div class='flash red'>You haven't begun.</div>
   <div class='flash green'>You're typing!</div>
@@ -48,24 +48,23 @@ input {
   <script>
 function hide(elem) { elem.style.display = 'none'; }
 function show(elem) { elem.style.display = 'block'; }
-
 var red    = document.querySelector('.red');
 var yellow = document.querySelector('.yellow');
 var green  = document.querySelector('.green');
-
 var input   = document.querySelector('#bind');
-var handler = done_typing({
-  before: function() {
+var handler = done_typing(input, {
+  start: function(ev) {
     hide(red);
     show(green);
     hide(yellow);
+    console.log(ev);
   },
-  after:  function() {
+  stop: function(ev) {
     hide(green);
     show(yellow);
+    console.log(ev);
   },
 });
-input.addEventListener('keyup', handler);
   </script>
 </body>
 </html>
