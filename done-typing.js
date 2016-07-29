@@ -1,13 +1,13 @@
 function done_typing(elem, config) {
-    var before  = config.before || function() {};
-    var after   = config.after  || function() {};
-    var delay   = config.delay  || 200;
+    var onStart = config.start || function() {};
+    var onStop  = config.stop  || function() {};
+    var delay   = config.delay || 200;
 
     var timeout = null;
 
     function down(ev) {
         if (timeout === null) {
-            before(ev);
+            onStart(ev);
         }
         clearTimeout(timeout);
     }
@@ -15,7 +15,7 @@ function done_typing(elem, config) {
     function up(ev) {
         timeout = setTimeout(function() {
             timeout = null;
-            after(ev);
+            onStop(ev);
         }, delay);
     }
 
@@ -26,3 +26,7 @@ function done_typing(elem, config) {
         elem.removeEventListener('keyup', up);
     };
 };
+
+if (typeof module !== 'undefined') {
+    module.exports = done_typing;
+}

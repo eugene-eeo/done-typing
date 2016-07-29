@@ -2,10 +2,13 @@
   "license": "MIT",
   "repository": "https://github.com/eugene-eeo/done-typing",
   "devDependencies": {
+    "browserify": "^13.1.0",
+    "simulant": "^0.2.2",
     "tap-dot": "^1.0.5",
-    "tape": "^4.6.0"
+    "tape": "^4.6.0",
+    "testling": "^1.7.1"
   },
   "scripts": {
-    "test": "tape './tests/*.js' | tap-dot"
+    "test": "browserify tests/test.js | testling | tap-dot"
   }
 }
