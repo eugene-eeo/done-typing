@@ -53,13 +53,13 @@ var green  = document.querySelector('.green');
 
 var input   = document.querySelector('#bind');
 var handler = done_typing(input, {
-  before: function(ev) {
+  start: function(ev) {
     hide(red);
     show(green);
     hide(yellow);
     console.log(ev);
   },
-  after:  function(ev) {
+  stop: function(ev) {
     hide(green);
     show(yellow);
     console.log(ev);
