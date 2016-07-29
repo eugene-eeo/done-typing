@@ -52,7 +52,7 @@ var yellow = document.querySelector('.yellow');
 var green  = document.querySelector('.green');
 
 var input   = document.querySelector('#bind');
-var handler = done_typing({
+var handler = done_typing(input, {
   before: function(ev) {
     hide(red);
     show(green);
@@ -65,7 +65,6 @@ var handler = done_typing({
     console.log(ev);
   },
 });
-input.addEventListener('keyup', handler);
   </script>
 </body>
 </html>

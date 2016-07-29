@@ -1,25 +1,28 @@
-function done_typing(config) {
-  var before  = config.before || function() {};
-  var after   = config.after  || function() {};
-  var delay   = config.delay  || 200;
-  var timeout = null;
+function done_typing(elem, config) {
+    var before  = config.before || function() {};
+    var after   = config.after  || function() {};
+    var delay   = config.delay  || 200;
 
-  return function() {
-    var ctx  = this;
-    var args = arguments;
+    var timeout = null;
 
-    if (timeout === null) {
-      before.apply(ctx, args);
+    function down(ev) {
+        if (timeout === null) {
+            before(ev);
+        }
+        clearTimeout(timeout);
     }
 
-    clearTimeout(timeout);
-    timeout = setTimeout(function() {
-      timeout = null;
-      after.apply(ctx, args);
-    }, delay);
-  };
-};
+    function up(ev) {
+        timeout = setTimeout(function() {
+            timeout = null;
+            after(ev);
+        }, delay);
+    }
 
-if (typeof module !== 'undefined') {
-  module.exports = done_typing;
-}
+    elem.addEventListener('keydown', down);
+    elem.addEventListener('keyup', up);
+    return function() {
+        elem.removeEventListener('keydown', down);
+        elem.removeEventListener('keyup', up);
+    };
+};

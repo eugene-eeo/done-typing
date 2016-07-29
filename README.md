@@ -7,11 +7,14 @@ and [fancy demos](https://eugene-eeo.github.io/done-typing).
 Example usage:
 
 ```js
-input.addEventListener('keyup', done_typing({
+var unbind = done_typing(input, {
     before: function() { /* ... */ },
     after:  function() { /* ... */ },
     delay:  200,
 }));
+
+// after the love is gone
+unbind();
 ```
 
 Install it just by dropping the `done-typing.js` file somewhere.
