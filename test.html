@@ -54,14 +54,16 @@ var green  = document.querySelector('.green');
 
 var input   = document.querySelector('#bind');
 var handler = done_typing({
-  before: function() {
+  before: function(ev) {
     hide(red);
     show(green);
     hide(yellow);
+    console.log(ev);
   },
-  after:  function() {
+  after:  function(ev) {
     hide(green);
     show(yellow);
+    console.log(ev);
   },
 });
 input.addEventListener('keyup', handler);
