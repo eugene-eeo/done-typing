@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+  <script src='done-typing.js'></script>
+  <style>
+body {
+  width: 20em;
+  margin: 10em auto;
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.flash {
+  padding: 1em;
+  display: none;
+  text-align: center;
+  color: white;
+}
+.red {
+  display: block;
+  background-color: #cc0000;
+  border: 2px solid #800000;
+}
+.yellow {
+  border: 2px solid #cc6600;
+  background-color: #ff9933;
+}
+.green {
+  border: 2px solid #006600;
+  background-color: #009900;
+}
+input {
+  border: 2px solid #777;
+  width: calc(100% - 2em - 4px);
+  font: inherit;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+  </style>
+</head>
+<body>
+  <input id='bind' placeholder='type here...'/>
+  <div class='flash red'>You haven't begun.</div>
+  <div class='flash green'>You're typing!</div>
+  <div class='flash yellow'>You've stopped.</div>
+  <script>
+function hide(elem) { elem.style.display = 'none'; }
+function show(elem) { elem.style.display = 'block'; }
+
+var red    = document.querySelector('.red');
+var yellow = document.querySelector('.yellow');
+var green  = document.querySelector('.green');
+
+var input   = document.querySelector('#bind');
+var handler = done_typing({
+  before: function() {
+    hide(red);
+    show(green);
+    hide(yellow);
+  },
+  after:  function() {
+    hide(green);
+    show(yellow);
+  },
+});
+input.addEventListener('keyup', handler);
+  </script>
+</body>
+</html>
