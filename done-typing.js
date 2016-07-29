@@ -19,3 +19,7 @@ function done_typing(config) {
     }, delay);
   };
 };
+
+if (typeof module !== 'undefined') {
+  module.exports = done_typing;
+}

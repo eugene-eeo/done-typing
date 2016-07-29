@@ -1,0 +1,11 @@
+{
+  "license": "MIT",
+  "repository": "https://github.com/eugene-eeo/done-typing",
+  "devDependencies": {
+    "tap-dot": "^1.0.5",
+    "tape": "^4.6.0"
+  },
+  "scripts": {
+    "test": "tape './tests/*.js' | tap-dot"
+  }
+}

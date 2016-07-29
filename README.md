@@ -1,8 +1,9 @@
-# ⌨ done-typing
+# done-typing
 
-Browser-only JS library for efficiently detecting and running callbacks
-when the user has just started typing, and when the user stops typing on
-the keyboard. Useful for form validation and [fancy demos](https://eugene-eeo.github.io/done-typing).
+Browser-only JS library for efficiently detecting and running
+callbacks when the user has just started typing, and when the
+user stops typing on the keyboard. Useful for form validation
+and [fancy demos](https://eugene-eeo.github.io/done-typing).
 Example usage:
 
 ```js
