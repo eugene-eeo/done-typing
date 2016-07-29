@@ -8,9 +8,9 @@ Example usage:
 
 ```js
 var unbind = done_typing(input, {
-    before: function() { /* ... */ },
-    after:  function() { /* ... */ },
-    delay:  200,
+    start: function() { /* ... */ },
+    stop:  function() { /* ... */ },
+    delay: 200,
 }));
 
 // after the love is gone
