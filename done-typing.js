@@ -1,4 +1,4 @@
-done_typing = function done_typing(config) {
+function done_typing(config) {
   var before = config.before || function() {};
   var after  = config.after  || function() {};
   var delay  = config.delay  || 200;
@@ -21,5 +21,5 @@ done_typing = function done_typing(config) {
       timeout = null;
       after.apply(ctx, args);
     }, delay);
-  }
+  };
 };
