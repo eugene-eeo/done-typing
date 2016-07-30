@@ -39,6 +39,8 @@ test('correct execution order', function(t) {
     var ku_2  = keyup('2');
 
     t.plan(2);
+    t.timeoutAfter(250);
+
     done_typing(input, {
         start: function(ev) {
             t.equal(ev, kd_1);
