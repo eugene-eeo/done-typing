@@ -3,11 +3,13 @@ function done_typing(elem, config) {
     var onStop  = config.stop  || function() {};
     var delay   = config.delay || 200;
 
+    var stopped = true;
     var timeout = null;
 
     function down(ev) {
-        if (timeout === null) {
+        if (stopped) {
             onStart(ev);
+            stopped = false;
         }
         clearTimeout(timeout);
     }
@@ -15,6 +17,7 @@ function done_typing(elem, config) {
     function up(ev) {
         timeout = setTimeout(function() {
             timeout = null;
+            stopped = true;
             onStop(ev);
         }, delay);
     }
