@@ -57,3 +57,24 @@ test('correct execution order', function(t) {
     simulant.fire(input, kd_2);
     simulant.fire(input, ku_2);
 });
+
+
+test('unbind function', function(t) {
+    var input = document.createElement('input');
+    var called = false;
+    var unbind = done_typing(input, {
+        start: function(ev) {
+            called = true;
+        },
+        stop: function(ev) {
+            called = true;
+        },
+    });
+
+    t.plan(1);
+    unbind();
+    simulant.fire(input, keydown('1'));
+    simulant.fire(input, keyup('1'));
+    t.equal(called, false);
+    t.end();
+});
