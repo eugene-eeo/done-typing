@@ -28,7 +28,7 @@ function done_typing(elem, config) {
         elem.removeEventListener('keydown', down);
         elem.removeEventListener('keyup', up);
     };
-};
+}
 
 if (typeof module !== 'undefined') {
     module.exports = done_typing;
